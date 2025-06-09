@@ -140,8 +140,16 @@ body {
 }
 
 /* ----- ENCABEZADO (HERO) ----- */
-.hero-section {
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1523438885239-c1b5c404db31?q=80&w=2070') no-repeat center center/cover;
+    .hero-section {
+    padding-top: 5.5rem;
+    padding-bottom: 6rem;
+    text-align: center;
+    color: #fff;
+    background-image: url("../img/bg0.jpg");
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center center;
+    background-size: cover;
     height: 100vh;
     display: flex;
     justify-content: center;
