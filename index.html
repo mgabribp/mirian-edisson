@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Boda - Mirian y Édisson</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&family=Mea+Culpa&display=swap" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header class="hero-section">
+        <div class="hero-text">
+            <p>Nos casamos</p>
+            <h1 class="names">Mirian & Édisson</h1>
+            <p>31 de Agosto de 2025</p>
+        </div>
+    </header>
+
+    <section class="countdown-section">
+        <h2 class="section-title">Falta muy poco...</h2>
+        <div id="countdown" class="countdown-container">
+            <div class="time-box"><span id="months">0</span>Meses</div>
+            <div class="time-box"><span id="days">0</span>Días</div>
+            <div class="time-box"><span id="hours">0</span>Horas</div>
+            <div class="time-box"><span id="minutes">0</span>Minutos</div>
+            <div class="time-box"><span id="seconds">0</span>Segundos</div>
+        </div>
+    </section>
+
+    <section class="details-section">
+        <h2 class="section-title">Te esperamos</h2>
+        <div class="details-content">
+            <h3>Ceremonia y Recepción</h3>
+            <p>Sábado, 31 de Agosto de 2025, 11:00 AM</p>
+            <p><strong>Nombre del Lugar</strong></p>
+            <p>Aso. De Militares S.P.</p>
+            <p>Quevedo – Los Ríos - Ecuador</p>
+        </div>
+    </section>
+
+    <section id="gallery" class="content-section fade-in">
+        <h2 class="section-title">Retratos de nuestro amor</h2>
+        <div class="gallery-container">
+            <div class="photo-slider">
+                <a href="img/foto-1.jpg" data-lightbox="gallery" data-title="Descripción de la foto 1"><img src="img/foto-1.jpg" alt="Foto de Mirian y Édisson 1"></a>
+                <a href="img/foto-2.jpg" data-lightbox="gallery" data-title="Descripción de la foto 2"><img src="img/foto-2.jpg" alt="Foto de Mirian y Édisson 2"></a>
+                <a href="img/foto-3.jpg" data-lightbox="gallery" data-title="Descripción de la foto 3"><img src="img/foto-3.jpg" alt="Foto de Mirian y Édisson 3"></a>
+                <a href="img/foto-4.jpg" data-lightbox="gallery" data-title="Descripción de la foto 4"><img src="img/foto-4.jpg" alt="Foto de Mirian y Édisson 4"></a>
+                <a href="img/foto-5.jpg" data-lightbox="gallery" data-title="Descripción de la foto 5"><img src="img/foto-5.jpg" alt="Foto de Mirian y Édisson 5"></a>
+                <a href="img/foto-6.jpg" data-lightbox="gallery" data-title="Descripción de la foto 6"><img src="img/foto-6.jpg" alt="Foto de Mirian y Édisson 6"></a>
+                <a href="img/foto-7.jpg" data-lightbox="gallery" data-title="Descripción de la foto 7"><img src="img/foto-7.jpg" alt="Foto de Mirian y Édisson 7"></a>
+                <a href="img/foto-1.jpg" data-lightbox="gallery" data-title="Descripción de la foto 1"><img src="img/foto-1.jpg" alt="Foto de Mirian y Édisson 1"></a>
+                <a href="img/foto-2.jpg" data-lightbox="gallery" data-title="Descripción de la foto 2"><img src="img/foto-2.jpg" alt="Foto de Mirian y Édisson 2"></a>
+                <a href="img/foto-3.jpg" data-lightbox="gallery" data-title="Descripción de la foto 3"><img src="img/foto-3.jpg" alt="Foto de Mirian y Édisson 3"></a>
+            </div>
+        </div>
+    </section>
+
+    <section class="details-section">
+        <h2 class="section-title">¿Cómo llegar?</h2>
+        <div class="location-content">
+            <img src="img/qr-ubicacion.png" alt="Código QR para Google Maps" class="qr-code">
+            <p>Escanea el código o presiona el botón para abrir en el mapa.</p>
+            <a href="https://maps.app.goo.gl/9Sk3Kee7kXX9kmCy5" target="_blank" class="button">Abrir en Google Maps</a>
+        </div>
+    </section>
+    
+    <section class="details-section gifts-section">
+        <h2 class="section-title">Obsequios</h2>
+        <p>Tu presencia es nuestro mejor regalo, pero si deseas tener un detalle con nosotros, te lo agradeceremos.</p>
+        <button id="openGiftsModal" class="button">Ver más</button>
+    </section>
+
+    <section class="rsvp-section">
+        <h2 class="section-title">Confirma tu Asistencia</h2>
+        <div id="rsvp-content">
+            </div>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+    </section>
+
+    <footer>
+        <p>Mirian & Édisson | 2025</p>
+    </footer>
+
+    <div id="rsvpModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div id="rsvpFormContainer">
+                <h3>Confirma tu asistencia</h3>
+                <p>Por favor, antes del 31 de Julio de 2025.</p>
+                <form id="rsvpForm" action="https://formspree.io/f/TU_ENLACE_AQUI" method="POST">
+                    <label for="name">Nombre(s) del invitado(s):</label>
+                    <input type="text" id="name" name="nombre" required>
+
+                    <label>¿Confirmas tu asistencia?</label>
+                    <div class="radio-group">
+                        <input type="radio" id="si" name="asistencia" value="Si" required><label for="si">Sí, allí estaré</label>
+                        <input type="radio" id="no" name="asistencia" value="No"><label for="no">No podré asistir</label>
+                    </div>
+
+                    <label for="guests">Número de asistentes:</label>
+                    <input type="number" id="guests" name="numero_invitados" min="1" value="1" required>
+
+                    <label for="restrictions">¿Alguna restricción alimentaria importante?</label>
+                    <textarea id="restrictions" name="restricciones" rows="3"></textarea>
+                    
+                    <button type="submit" class="button">Enviar Confirmación</button>
+                </form>
+            </div>
+            <div id="thankYouMessage" style="display:none;">
+                <h3>¡Gracias por confirmar!</h3>
+                <p>Tu respuesta ha sido enviada. ¡Nos vemos en la boda!</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="giftsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3>Detalles para Obsequios</h3>
+            <p>Si deseas regalarnos algo, puedes hacerlo a través de un depósito o transferencia.</p>
+            <p>Agradecemos en gran manera su gentileza</p>
+            <p><strong>Banco:</strong> Banco Pichincha</p>
+            <p><strong>Titular:</strong> Miriam Vélez</p>
+            <p><strong>No. de Cuenta:</strong> 2200424509</p>
+            <p><strong>Tipo:</strong> Ahorros</p>
+            <p><strong>Cédula:</strong> 1205718362</p>
+            <p>¡Muchas gracias por tu cariño!</p>
+        </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
