@@ -6,38 +6,66 @@
     --white-bg: #FFFFFF;
     --light-gray-bg: #f9f9f9;
     --text-color: #3f3f3f;
-    --font-names: 'Mea Culpa', cursive;
-    --font-body: 'EB Garamond', serif;
+    --font-hero: 'Mea Culpa', cursive;
+    --font-names: 'Playfair Display', serif; /* Cambiado a Playfair Display */
+    --font-body: 'Lora', serif; /* Cambiado a Lora */
+    --font-subtitle: 'Playfair Display', serif; /* Nueva variable para subtítulos */
 }
+
+/* ----- ESTILO PANTALLA DE CARGA ----*/
+
 
 /* ----- ESTILOS GENERALES ----- */
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 70px; /* Altura de la barra de navegación */
-}
-
 body {
-    margin: 10 0;
-    font-family: var(--font-body);
-    background-color: var(--white-bg);
+    margin: 10px 0; /* Asegurar que el margen sea consistente */
+    font-family: var(--font-body); /* Texto del cuerpo en Lora */
+    background-image: url('../img/assets/paper.jpg'), radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.3) 1px, transparent 1px);
+    background-size: 100% auto, 50px 50px; /* Ajustar la imagen de fondo al 100% del ancho */
+    background-attachment: scroll, scroll; /* Ambos fondos se desplazan con el contenido */
+    background-position: center, center; /* Posición de los fondos */
     color: var(--text-color);
     line-height: 2;
     text-align: center;
-}
+    width: 100%; /* Asegurar que el cuerpo ocupe el 100% del ancho */
+    box-sizing: border-box; /* Incluir paddings y bordes en el ancho total */
+    }
 
 .section-title {
-    font-size: 3em;
+    font-size: 3em; /* Título */
     color: var(--dark-green);
-    font-weight: normal;
-    margin-bottom: 40px;
-    margin-inline: 20px;
+    font-weight: 500;
+    font-family: var(--font-names);
+    margin-bottom: 10px;
+    margin-inline: 10px;
     letter-spacing: 1px;
 }
 
+.section-subtitle {
+    font-size: 1.85em; /* Subtítulo */
+    color: var(--text-color);
+    font-family: var(--font-subtitle);
+    font-weight: 800; /* Peso Medium */
+    font-style: italic; /* Estilo itálico */
+    margin-bottom: 10px;
+}
+
+/* ----- HISTORIA ----- */
+.story-text {
+    font-size: 1,2em;
+    font-style: italic;
+    font-family: var(--font-body);
+    max-width: 700px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    margin: auto;
+}
+
 .content-section {
-    padding: 80px 20px;
+    padding: 20px 20px; /* Mantener el padding, pero asegurar que no cause desbordamiento */
     max-width: 900px;
     margin: auto;
+    box-sizing: border-box; /* Incluir paddings en el ancho total */
 }
 
 .content-section:nth-of-type(odd) {
@@ -46,12 +74,14 @@ body {
 
 .button {
     display: inline-block;
+    margin-top: 1.6em;
     background-color: var(--dark-green);
     color: var(--white-bg);
     padding: 12px 30px;
     text-decoration: none;
     border-radius: 50px; /* Botones más redondeados */
     font-size: 1em;
+    font-weight: 540;
     border: 2px solid var(--dark-green);
     cursor: pointer;
     transition: all 0.3s ease;
@@ -76,6 +106,109 @@ body {
     transform: translateY(0);
 }
 
+/* -----  EN LAS ESQUINAS ----- */
+.section {
+    position: relative;
+    padding: 120px 50px; /* Mantener el padding, pero asegurar que no cause desbordamiento */
+    max-width: 1000px;
+    margin: auto;
+    box-sizing: border-box; /* Incluir paddings en el ancho total */
+}
+
+.section::before,
+.section::after {
+    content: '';
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 1;
+}
+
+/* Rosa en la esquina superior izquierda */
+.section::before {
+    top: 50px;
+    left: 50px;
+    background-image: url('../img/assets/rosa01.png');
+    transform: rotate(180deg); /* Girar la rosa */
+}
+
+/* Rosa en la esquina inferior derecha */
+.section::after {
+    bottom: 20px;
+    right: 50px;
+    background-image: url('../img/assets/rosa01.png');
+}
+
+/* -----  VERTICALES ----- */
+.vertical-roses {
+    position: relative;
+    padding: 80px 20px;
+}
+
+.vertical-roses::before,
+.vertical-roses::after {
+    content: '';
+    position: absolute;
+    top: 100px;
+    bottom: 0;
+    width: 150px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.6;
+}
+
+/* Rosa vertical a la izquierda */
+.vertical-roses::before {
+    left: 0;
+    background-image: url('../img/assets/rosa05.png');
+}
+
+/* Rosa vertical a la derecha */
+.vertical-roses::after {
+    right: 0;
+    background-image: url('../img/assets/rosa04.png');
+}
+
+/* ----- ÚLTIMA IMAGEN DE ROSAS ----- */
+.last-roses {
+    position: relative;
+    padding: 30px 20px;
+}
+
+.last-roses::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%;
+    max-width: 400px;
+    height: 250px;
+    background-image: url('../img/assets/rosa03.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 1;
+}
+
+/* ----- EFECTO DE MOVIMIENTO ----- */
+@keyframes sway {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(10px);
+    }
+}
+
+/* Aplicar el efecto de movimiento a una rosa */
+.moving-rose {
+    animation: sway 3s ease-in-out infinite;
+}
 
 /* ----- BARRA DE NAVEGACIÓN ----- */
 .navbar {
@@ -156,8 +289,9 @@ body {
     align-items: center;
     color: var(--white-bg);
 }
-.hero-text .names {
-    font-family: var(--font-names);
+.hero-text 
+    .names {
+    font-family: var(--font-hero);
     font-size: 8em;
     font-weight: normal;
     margin: 0;
@@ -168,42 +302,30 @@ body {
     letter-spacing: 2px;
 }
 
-/* ----- HISTORIA ----- */
-.story-text {
-    font-size: 2.2em;
-    font-style: italic;
-    max-width: 700px;
-    margin: auto;
-}
 
 /* ----- CONTADOR Y EVENTO ----- */
-.countdown-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 50px;
-}
-.time-box {
-    color: var(--dark-green);
-    padding: 8px;
-    min-width: 20px;
-}
-.time-box span {
-    display: block;
-    font-size: 6em;
+.countdown-inline-container {
+    font-family: var(--font-body);
+    font-size: 2.0em; /* Tamaño del texto del cronómetro */
     font-weight: bold;
-    color: var(--light-green);
+    color: var(--dark-green);
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 15px;
+    border-radius: 45px;
+    display: inline-block;
+    letter-spacing: 2px;
+    border: 0.5px solid var(--light-green);
 }
 .event-details {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 40px;
-    margin-top: 40px;
+    margin-top: 20px;
     text-align: left;
 }
 .event-card {
     background: var(--white-bg);
-    padding: 30px;
+    padding: 40px;
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
@@ -260,8 +382,11 @@ body {
 
 /* ----- RSVP ----- */
 #rsvp-content p {
-    font-size: 1.2em;
-    margin-bottom: 20px;
+    font-size: 1,2em;
+    font-style: normal;
+    font-weight: 750;
+    margin-bottom: 10px;
+    margin: auto;
 }
 .rsvp-expired-message {
     font-size: 1.2em;
@@ -319,4 +444,5 @@ footer {
     .section-title { font-size: 2.2em; }
     .event-details { grid-template-columns: 1fr; }
     .countdown-container { flex-direction: column; gap: 0; }
+    .countdown-inline-container { font-size: 1.5em; }
 }
