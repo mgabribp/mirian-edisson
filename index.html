@@ -4,37 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nuestra Boda - Mirian y Edisson</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Preconnect para mejorar la carga de recursos -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&family=Mea+Culpa&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 
+    <!-- Fuentes de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&family=Mea+Culpa&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;500italic;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400&display=swap" rel="stylesheet">
+
+    <!-- Lightbox CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet">
 
+    <!-- Tu archivo de estilos personalizado -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
+    
     <header class="hero-section">
         <div class="hero-text">
-            <p>Nos casamos</p>
+            <p class="story-text">Nos casamos</p>
             <h1 class="names">Mirian & Edisson</h1>
-            <p>31 de Agosto de 2025</p>
+            <p class="story-text">31 de Agosto de 2025</p>
         </div>
     </header>
 
     <section class="countdown-section">
         <h2 class="section-title">Falta muy poco...</h2>
-        <div id="countdown" class="countdown-container">
-            <div class="time-box"><span id="months">0</span>Meses</div>
-            <div class="time-box"><span id="days">0</span>Días</div>
-            <div class="time-box"><span id="hours">0</span>Horas</div>
-            <div class="time-box"><span id="minutes">0</span>Minutos</div>
-            <div class="time-box"><span id="seconds">0</span>Segundos</div>
-        </div>
+        <p class="story-text">Estamos muy emocionados por compartir este momento tan especial contigo.</p>
+        <p></p>
+        <div id="countdown-inline" class="countdown-inline-container"></div>
+        <p></p>
+        <p class="story-text"> <strong>
+        Fecha y Hora:</strong> Sábado, 31 de Agosto de 2025, 11:00 AM</p>
+
     </section>
 
-    <section class="details-section">
+    <section class="section details-section">
         <h2 class="section-title">Te esperamos</h2>
         <div class="details-content">
             <h3>Ceremonia y Recepción</h3>
@@ -45,7 +52,7 @@
         </div>
     </section>
 
-    <section id="gallery" class="content-section fade-in">
+    <section class="vertical-roses gallery-section">
         <h2 class="section-title">Retratos de nuestro amor</h2>
         <div class="gallery-container">
             <div class="photo-slider">
@@ -67,80 +74,88 @@
         <h2 class="section-title">¿Cómo llegar?</h2>
         <div class="location-content">
             <img src="img/qr-ubicacion.png" alt="Código QR para Google Maps" class="qr-code">
-            <p>Escanea el código o presiona el botón para abrir en el mapa.</p>
-            <a href="https://maps.app.goo.gl/9Sk3Kee7kXX9kmCy5" target="_blank" class="button">Abrir en Google Maps</a>
+            <p class="story-text">Escanea el código o presiona el botón para abrir en el mapa.</p>
+            <a href="https://maps.app.goo.gl/9Sk3Kee7kXX9kmCy5" target="_blank" class="button">Google Maps</a>
         </div>
     </section>
     
     <section class="details-section gifts-section">
         <h2 class="section-title">Obsequios</h2>
-        <p>Tu presencia es nuestro mejor regalo, pero si deseas tener un detalle con nosotros, te lo agradeceremos.</p>
-        <button id="openGiftsModal" class="button">Ver más</button>
+        <p class="story-text">Tu presencia es nuestro mejor regalo, y si deseas obsequiar un detalle con nosotros, te lo agradeceremos.</p>
+         <button id="openGiftsModal" class="button">Ver más</button><!--  AQUÍ ESTÁ EL BOTÓN  -->
     </section>
 
-    <section class="rsvp-section">
+    <section class="section rsvp-section">
         <h2 class="section-title">Confirma tu Asistencia</h2>
         <div id="rsvp-content">
-            </div>
+            <p class="story-text">Es un placer disfrutar de tu compañía.</p> 
+            <p class="story-text">Ten la bondad de confirmar tu asistencia hasta el domingo 31 de Julio de 2025.</p> 
+            <button id="openRsvpModal" class="button">Confirmar Asistencia</button> 
+        </div>
             <p></p>
             <p></p>
             <p></p>
             <p></p>
     </section>
 
-    <footer>
-        <p>Mirian & Edisson | 2025</p>
+    <footer class="last-roses">
+        <p class="story-text">Mirian & Edisson | 2025</p>
     </footer>
 
     <div id="rsvpModal" class="modal">
-    <div class="modal-content">
-        <span class="close-button">&times;</span>
-        <div id="rsvpFormContainer">
-            <h3>Confirma tu asistencia</h3>
-            <p>Hasta el 31 de Julio de 2025.</p>
-            <form id="rsvpForm" method="POST" action="https://script.google.com/macros/s/AKfycbwpFtpuLbLWb6XpIQIWxfUrAkZwNP9rrwaBbjpeu5-JhL6yNB7z7w0Y1WPd3khEtB-mtg/exec"> 
-                <label for="name">Nombre(s) del invitado(s):</label>
-                <input type="text" id="name" name="nombre" required>
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div id="rsvpFormContainer">
+                <h3>Confirma tu asistencia</h3>
+                <p class="story-text">Hasta el domingo 31 de Julio de 2025.</p>
+                <form id="rsvpForm" method="POST" action="https://script.google.com/macros/s/AKfycbwpFtpuLbLWb6XpIQIWxfUrAkZwNP9rrwaBbjpeu5-JhL6yNB7z7w0Y1WPd3khEtB-mtg/exec"> 
+                    <label for="name">Nombre(s) del invitado(s):</label>
+                    <input type="text" id="name" name="nombre" required>
 
-                <label>¿Confirmas tu asistencia?</label>
-                <div class="radio-group">
-                    <input type="radio" id="si" name="asistencia" value="Si" required><label for="si">Sí, allí estaré</label>
-                    <input type="radio" id="no" name="asistencia" value="No"><label for="no">No podré asistir</label>
-                </div>
+                    <label>¿Confirmas tu asistencia?</label>
+                    <div class="radio-group">
+                        <input type="radio" id="si" name="asistencia" value="Si" required><label for="si">Sí, allí estaré</label>
+                        <input type="radio" id="no" name="asistencia" value="No"><label for="no">No podré asistir</label>
+                    </div>
 
-                <label for="guests">Número de asistentes:</label>
-                <input type="number" id="guests" name="numero_invitados" min="1" value="1" required>
+                    <label for="guests">Número de asistentes:</label>
+                    <input type="number" id="guests" name="numero_invitados" min="1" value="1" required>
 
-                <label for="restrictions">¿Alguna restricción alimentaria importante?</label>
-                <textarea id="restrictions" name="restricciones" rows="3"></textarea>
-                
-                <button type="submit" class="button">Enviar Confirmación</button>
-            </form>
-        </div>
-        <div id="thankYouMessage" style="display:none;">
-            <h3>¡Gracias por confirmar!</h3>
-            <p>Tu respuesta ha sido enviada. ¡Nos vemos en la boda!</p>
+                    <label for="restrictions">¿Alguna restricción alimentaria importante?</label>
+                    <textarea id="restrictions" name="restricciones" rows="3"></textarea>
+                    
+                    <button type="submit" class="button">Enviar Confirmación</button>
+                </form>
+            </div>
+            <div id="thankYouMessage" style="display:none;">
+                <h3>¡Gracias por confirmar!</h3>
+                <p class="story-text">Tu respuesta ha sido enviada. ¡Nos vemos en la boda!</p>
+            </div>
         </div>
     </div>
 
-    <div id="giftsModal" class="modal">
+    <div id="giftsModal" class="modal">  <!-- AQUÍ ESTÁ EL MODAL -->
         <div class="modal-content">
             <span class="close-button">&times;</span>
             <h3>Detalles para Obsequios</h3>
-            <p>Si deseas regalarnos algo, puedes hacerlo a través de un depósito o transferencia.</p>
-            <p>Agradecemos en gran manera su gentileza</p>
-            <p><strong>Banco:</strong> Banco Pichincha</p>
-            <p><strong>Titular:</strong> Miriam Vélez</p>
-            <p><strong>No. de Cuenta:</strong> 2200424509</p>
-            <p><strong>Tipo:</strong> Ahorros</p>
-            <p><strong>Cédula:</strong> 1205718362</p>
-            <p>¡Muchas gracias por tu cariño!</p>
+            <p class="story-text">Si deseas regalarnos algo, puedes hacerlo a través de un depósito o transferencia.</p>
+            <p class="story-text">Agradecemos en gran manera su gentileza</p>
+            <p class="story-text"><strong>Banco:</strong> Banco Pichincha</p>
+            <p class="story-text"><strong>Titular:</strong> Mirian Vélez</p>
+            <p class="story-text"><strong>No. de Cuenta:</strong> 2200424509</p>
+            <p class="story-text"><strong>Tipo:</strong> Ahorros</p>
+            <p class="story-text"><strong>Cédula:</strong> 1205718362</p>
+            <p class="story-text">¡Muchas gracias por tu cariño!</p>
         </div>
     </div>
+    
+    <audio id="background-music" loop>
+        <source src="audio/song.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
 
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
-    <script src="js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>
