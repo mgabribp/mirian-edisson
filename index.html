@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuestra Boda - Mirian y Edisson</title>
+    <title>Mirian & Edisson</title>
     <!-- Preconnect para mejorar la carga de recursos -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,7 +21,6 @@
 </head>
 <body>
 
-    
     <header class="hero-section">
         <div class="hero-text">
             <p class="story-text">Nos casamos</p>
@@ -30,7 +29,7 @@
         </div>
     </header>
 
-    <section class="countdown-section">
+    <section class="section countdown-section">
         <h2 class="section-title">Falta muy poco...</h2>
         <p class="story-text">Estamos muy emocionados por compartir este momento tan especial contigo.</p>
         <p></p>
@@ -52,6 +51,12 @@
         </div>
     </section>
 
+    <section class="section photo-album-section">
+        <h2 class="section-title">Álbum de Fotos</h2>
+        <p class="section-subtitle">¡Sigue subiendo fotos al álbum de nuestra boda!</p>
+        <button id="openAlbumModal" class="button">Ver Álbum</button>
+    </section>
+
     <section class="vertical-roses gallery-section">
         <h2 class="section-title">Retratos de nuestro amor</h2>
         <div class="gallery-container">
@@ -70,7 +75,7 @@
         </div>
     </section>
 
-    <section class="details-section">
+    <section class="section details-section">
         <h2 class="section-title">¿Cómo llegar?</h2>
         <div class="location-content">
             <img src="img/qr-ubicacion.png" alt="Código QR para Google Maps" class="qr-code">
@@ -79,7 +84,7 @@
         </div>
     </section>
     
-    <section class="details-section gifts-section">
+    <section class="section details-section gifts-section">
         <h2 class="section-title">Obsequios</h2>
         <p class="story-text">Tu presencia es nuestro mejor regalo, y si deseas obsequiar un detalle con nosotros, te lo agradeceremos.</p>
          <button id="openGiftsModal" class="button">Ver más</button><!--  AQUÍ ESTÁ EL BOTÓN  -->
@@ -131,6 +136,15 @@
                 <h3>¡Gracias por confirmar!</h3>
                 <p class="story-text">Tu respuesta ha sido enviada. ¡Nos vemos en la boda!</p>
             </div>
+        </div>
+    </div>
+
+       <div id="albumModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3>Álbum de Fotos</h3>
+            <p>¡Aquí puedes ver todas las fotos de nuestra boda!</p>
+            <a href="https://photos.app.goo.gl/8BeJ4gXZVxrrj51C8" target="_blank" class="button">Abrir Álbum</a>
         </div>
     </div>
 
