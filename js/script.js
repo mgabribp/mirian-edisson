@@ -31,17 +31,39 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // --- LÓGICA DE MODALS ---
+    // --- LÓGICA DE MODALS ---
     const rsvpModal = document.getElementById('rsvpModal');
     const giftsModal = document.getElementById('giftsModal');
+    const albumModal = document.getElementById('albumModal');
     const openGiftsBtn = document.getElementById('openGiftsModal');
-    const openRsvpBtn = document.getElementById('openRsvpModal'); // Asegúrate de que este ID esté en el HTML
+    const openRsvpBtn = document.getElementById('openRsvpModal');
+    const openAlbumBtn = document.getElementById('openAlbumModal');
     const closeButtons = document.querySelectorAll('.close-button');
+
+    // Función para cerrar todos los modales
+    function closeModal() {
+        if (rsvpModal) rsvpModal.style.display = 'none';
+        if (giftsModal) giftsModal.style.display = 'none';
+        if (albumModal) albumModal.style.display = 'none';
+    }
+
+    // Asignar el cierre a todos los botones con la 'x'
+    closeButtons.forEach(btn => {
+        btn.addEventListener('click', closeModal);
+    });
+
+    // Cerrar al hacer clic fuera del contenido del modal
+    window.addEventListener('click', (event) => {
+        if (event.target == rsvpModal || event.target == giftsModal || event.target == albumModal) {
+            closeModal();
+        }
+    });
 
     // Abrir modal de Obsequios
     if (openGiftsBtn) {
         openGiftsBtn.addEventListener('click', function() {
             if (giftsModal) {
-                giftsModal.style.display = 'flex'; // Usamos flex para centrar
+                giftsModal.style.display = 'flex';
             }
         });
     }
@@ -55,23 +77,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Cerrar todos los modales
-    function closeModal() {
-        if (rsvpModal) rsvpModal.style.display = 'none';
-        if (giftsModal) giftsModal.style.display = 'none';
+    // Abrir modal de Álbum de Fotos
+    if (openAlbumBtn) {
+        openAlbumBtn.addEventListener('click', function() {
+            if (albumModal) {
+                albumModal.style.display = 'flex';
+            }
+        });
     }
-
-    // Asignar el cierre a todos los botones con la 'x'
-    closeButtons.forEach(btn => {
-        btn.addEventListener('click', closeModal);
-    });
-
-    // Cerrar al hacer clic fuera del contenido del modal
-    window.addEventListener('click', (event) => {
-        if (event.target == rsvpModal || event.target == giftsModal) {
-            closeModal();
-        }
-    });
 
     // --- LÓGICA DEL FORMULARIO DE RSVP (Sin cambios) ---
     const form = document.getElementById('rsvpForm');
@@ -121,5 +134,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+    
 });
+
