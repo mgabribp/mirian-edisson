@@ -4,6 +4,7 @@
     --light-green: #758966;
     --gold-accent: #D4AF37;
     --white-bg: #FFFFFF;
+    --black-bg: #000000;
     --light-gray-bg: #f9f9f9;
     --text-color: #3f3f3f;
     --font-hero: 'Mea Culpa', cursive;
@@ -12,8 +13,100 @@
     --font-subtitle: 'Playfair Display', serif; /* Nueva variable para subtítulos */
 }
 
-/* ----- ESTILO PANTALLA DE CARGA ----*/
+/* ----- PANTALLA DE CARGA ----- */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--black-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start; /* Centrar verticalmente */
+    z-index: 1000;
+    transition: opacity 0.5s ease-out;
+}
 
+.loading-arch {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centrar verticalmente las imágenes */
+    height: 100%; /* Asegurar que el contenedor ocupe toda la altura */
+    position: relative; /* Asegurar que el contenedor sea el contexto de posicionamiento */
+}
+
+.loading-arch-left, .loading-arch-right {
+    height: 100%; /* Asegurar que la imagen ocupe toda la altura del contenedor */
+    filter: grayscale(100%);
+    transition: filter 2s ease-in-out;
+    object-fit: cover; /* Asegurar que la imagen cubra el contenedor sin distorsionarse */
+}
+
+.loading-arch-left {
+    transform-origin: right bottom;
+}
+
+.loading-arch-right {
+    transform-origin: left bottom;
+}
+
+.loading-shields {
+    display: flex;
+    justify-content: space-around; /* Distribuir los escudos uniformemente */
+    width: 100%;
+    opacity: 0;
+    transition: opacity 3s ease-out;
+    position: absolute; /* Posicionar los escudos por encima del fondo */
+    top: 50%; /* Centrar verticalmente */
+    transform: translateY(-50%);
+    z-index: 1001; /* Asegurar que los escudos estén por encima del fondo */
+}
+
+.loading-shield-left, .loading-shield-right {
+    width: 40%;
+    object-fit: contain; /* Asegurar que los escudos se ajusten al contenedor sin distorsionarse */
+}
+
+/* ----- EFECTO DE CARGA ----- */
+@keyframes load {
+    0% {
+        filter: grayscale(100%);
+    }
+    100% {
+        filter: grayscale(0%);
+    }
+}
+
+/* ----- EFECTO DE APERTURA DE PUERTAS ----- */
+@keyframes open-left-door {
+    0% {
+        transform: rotateY(0deg);
+    }
+    100% {
+        transform: rotateY(-90deg);
+    }
+}
+
+@keyframes open-right-door {
+    0% {
+        transform: rotateY(0deg);
+    }
+    100% {
+        transform: rotateY(90deg);
+    }
+}
+
+/* ----- EFECTO DE DESTELLO ----- */
+@keyframes flash {
+    0%, 100% {
+        background-color: var(--black-bg);
+    }
+    50% {
+        background-color: var(--white-bg);
+    }
+}
 
 /* ----- ESTILOS GENERALES ----- */
 html, body {
@@ -42,6 +135,7 @@ body {
     margin-bottom: 10px;
     margin-inline: 10px;
     letter-spacing: 1px;
+    line-height: 1.2; /* Ajustar el interlineado */
 }
 
 .section-subtitle {
@@ -130,7 +224,16 @@ body {
     background-position: center;
     opacity: 0,25; 
     }
+.section::before{
+    animation: sway 5s ease-in-out infinite;
+    animation-delay: 2.5s;
+}
 
+.section::after{
+    animation: sway 5s ease-in-out infinite;
+    animation-delay: 0s;
+    
+}
 
 /* -----  VERTICALES ----- */
 .vertical-roses {
@@ -155,12 +258,15 @@ body {
 .vertical-roses::before {
     left: 0;
     background-image: url('../img/assets/rosa05.png');
+    animation: sway 5s ease-in-out infinite;
 }
 
 /* Rosa vertical a la derecha */
 .vertical-roses::after {
     right: 0;
     background-image: url('../img/assets/rosa04.png');
+    animation: sway 5s ease-in-out infinite;
+    animation-delay: 2.5s;
 }
 
 /* ----- ÚLTIMA IMAGEN DE ROSAS ----- */
@@ -182,7 +288,7 @@ body {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    opacity: 0,7;
+    opacity: 0.95;
 }
 
 /* ----- EFECTO DE MOVIMIENTO ----- */
@@ -197,7 +303,7 @@ body {
 
 /* Aplicar el efecto de movimiento a una rosa */
 .moving-rose {
-    animation: sway 3s ease-in-out infinite;
+    animation: sway 3s ease-in-out infinite; /* Añadir animación de movimiento */
 }
 
 /* ----- BARRA DE NAVEGACIÓN ----- */
@@ -514,8 +620,8 @@ footer {
 .section::before {
     top: 50px;
     left: 50px;
-    background-image: url('../img/assets/rosa01.png');
-    transform: rotate(180deg); /* Girar la rosa */
+    background-image: url('../img/assets/rosa02.png');
+    transform: rotate(0deg); /* Girar la rosa */
     z-index: -1;
 }
 
@@ -525,4 +631,30 @@ footer {
     right: 50px;
     background-image: url('../img/assets/rosa01.png');
     z-index: -1;
+}
+/* ----- MEDIA QUERIES ----- */
+@media (max-width: 768px) {
+    /* Tamaño de las rosas para dispositivos móviles */
+    .section::before,
+    .section::after {
+        width: 300px;
+        height: 300px;
+    }
+    .vertical-roses::before,
+    .vertical-roses::after {
+    width: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Tamaño de las rosas para teléfonos inteligentes */
+    .section::before,
+    .section::after {
+        width: 150px;
+        height: 150px;
+    }
+    .vertical-roses::before,
+    .vertical-roses::after {
+    width: 100px;
+    }
 }
