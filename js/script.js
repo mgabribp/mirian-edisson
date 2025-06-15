@@ -30,8 +30,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 1000);
     }
 
-    // --- LÓGICA DE MODALS ---
-    // --- LÓGICA DE MODALS ---
+        // --- LÓGICA DE MODALS ---
+    const loadingScreen = document.getElementById('loading-screen');
+    const archLeft = document.querySelector('.loading-arch-left');
+    const archRight = document.querySelector('.loading-arch-right');
+    const shields = document.querySelector('.loading-shields');
     const rsvpModal = document.getElementById('rsvpModal');
     const giftsModal = document.getElementById('giftsModal');
     const albumModal = document.getElementById('albumModal');
@@ -39,6 +42,44 @@ document.addEventListener('DOMContentLoaded', function() {
     const openRsvpBtn = document.getElementById('openRsvpModal');
     const openAlbumBtn = document.getElementById('openAlbumModal');
     const closeButtons = document.querySelectorAll('.close-button');
+
+        // Función para simular la carga de la página
+    function simulateLoading() {
+        return new Promise((resolve) => {
+            let loaded = 0;
+            const interval = setInterval(() => {
+                loaded += 10;
+                if (loaded >= 100) {
+                    clearInterval(interval);
+                    resolve();
+                }
+            }, 100);
+        });
+    }
+
+    // Función para aplicar la animación de carga
+    async function loadPage() {
+        await simulateLoading();
+        archLeft.style.animation = 'load 2s forwards';
+        archRight.style.animation = 'load 2s forwards';
+        await new Promise(resolve => setTimeout(resolve, 2000)); // Esperar a que se completen las animaciones de carga
+        archLeft.style.animation = 'open-left-door 2s forwards';
+        archRight.style.animation = 'open-right-door 2s forwards';
+        await new Promise(resolve => setTimeout(resolve, 2000)); // Esperar a que se completen las animaciones de apertura de puertas
+        loadingScreen.style.animation = 'flash 0.5s forwards';
+        await new Promise(resolve => setTimeout(resolve, 500)); // Esperar a que se complete el efecto de flash
+        shields.style.opacity = '1';
+        await new Promise(resolve => setTimeout(resolve, 5000)); // Esperar a que se muestren los escudos
+        shields.style.opacity = '0';
+        await new Promise(resolve => setTimeout(resolve, 3000)); // Esperar a que se oculten los escudos
+        loadingScreen.style.opacity = '0';
+        loadingScreen.style.transition = 'opacity 0.5s ease-out';
+        await new Promise(resolve => setTimeout(resolve, 500)); // Esperar a que se oculte la pantalla de carga
+        loadingScreen.style.display = 'none';
+    }
+
+    loadPage();
+
 
     // Función para cerrar todos los modales
     function closeModal() {
